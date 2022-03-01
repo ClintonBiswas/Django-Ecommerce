@@ -1,0 +1,82 @@
+  {% load static %}
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+      <link rel="stylesheet" href="{% static 'css/style.css'%}">
+      <title>{% block title_block %}E-com | Clinton {% endblock%}</title>
+      <style>
+        .card{
+          height: 350px;
+        }
+        .card-product:after{
+          content: "";
+          display: table;
+          clear: both;
+          visibility: hidden;
+        }
+        .card-product .price-new, .cart-product .price{
+          margin-right: 5px;
+        }
+        .card-product .price-old{
+          color: #999;
+        }
+        .card-product .image-wrap{
+          border-radius: 3px 3px 0 0;
+          overflow: hidden;
+          height: 220px;
+          position: relative;
+          text-align: center;
+        }
+        .card-product .image-wrap img{
+          max-height: 100%;
+          max-width: 100%;
+          object-fit: cover;
+        }
+        .card-product .info-wrap{
+          overflow: hidden;
+          padding: 15px;
+          border-top: 1px solid #eee;
+        }
+        .card-product .action-wrap{
+          padding-top: 4px;
+          margin-top: 4px;
+        }
+        .card-product .bottom-wrap{
+          padding: 15px;
+          border-top: 1px solid #eee;
+        }
+        .card-product .title{
+          margin-top: 0px;
+        }
+      </style>
+    </head>
+    <body>
+      {% include 'nav.html'%}
+      <div class="container">
+
+        <div class="messages container mt-2">
+          {% if messages %}
+          {% for message in messages%}
+          <div {% if message.tags %}class="alert alert-{{message.tags}} {% endif %}" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label='Close'><span aria-hidden="true">&times;</span></button>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+
+        {% block body_block%}
+
+        {% endblock%}
+
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+  </html>
